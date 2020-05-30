@@ -1,0 +1,40 @@
+dotnet --info
+cd D:\Users\fotis\Documents\CVs\learning\NETCore\NetCore_React\Reactivities
+d:
+dotnet -h
+dotnet new -h
+dotnet new sln
+dotnet new classlib -n Domain
+dotnet new classlib -n Application
+dotnet new classlib -n Persistence
+dotnet new webapi -n API
+dotnet sln add Domain/
+dotnet sln add API/
+dotnet sln add Application/
+dotnet sln add Persistence/
+dotnet sln list
+cd Application
+dotnet add reference ../Domain/
+dotnet add reference ../Persistence/
+cd ..
+cd API
+dotnet add reference ../Application/
+cd ..
+cd Persistence
+dotnet add reference ../Domain/
+cd ..
+code .
+ls
+doskey /h > cmd_history.txt
+-- after adding EntityframeworkCore reference
+dotnet restore
+
+dotnet tool install --global dotnet-ef
+
+dotnet run -p API/
+
+dotnet ef migrations add InitialCreate -p Persistence/ -s API/
+
+dotnet watch run
+
+dotnet ef migrations add SeedValues -p Persistence/ -s API/   
