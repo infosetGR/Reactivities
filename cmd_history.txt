@@ -51,4 +51,4 @@ npm install semantic-ui-react
 
  npm install @types/uuid
 
- dotnet ef drop database -p Persistence/ -s API/   
+ dotnet ef database drop -p Persistence/ -s API/   
