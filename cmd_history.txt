@@ -52,3 +52,7 @@ npm install semantic-ui-react
  npm install @types/uuid
 
  dotnet ef database drop -p Persistence/ -s API/   
+
+ npm install react-router-dom
+
+ npm install @types/react-router-dom
