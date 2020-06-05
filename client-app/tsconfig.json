@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": true,
     "target": "es5",
     "lib": [
       "dom",
@@ -18,10 +17,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
-    "experimentalDecorators":true
+    "jsx": "preserve",
+    "experimentalDecorators": true
   },
   "include": [
-    "src"
+    "src",
+    "./typings-custom/**/*.ts"
   ]
 }
