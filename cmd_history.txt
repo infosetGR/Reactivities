@@ -56,3 +56,9 @@ npm install semantic-ui-react
  npm install react-router-dom
 
  npm install @types/react-router-dom
+ npm install @types/react-cropper
+
+
+ dotnet user-secrets set "Cloudinary:CloudName" "fotisss"
+ dotnet user-secrets set "Cloudinary:ApiKey" "762788446487497"
+ dotnet user-secrets set "Cloudinary:ApiSecret" "zvikwssqWxBcG320kd4VxdjKKKk"
