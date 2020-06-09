@@ -11,7 +11,7 @@ const ActivityListItem: React.FC<{ activity: IActivity }> = ({ activity }) => {
     <Segment.Group>
       <Segment>
         <Item.Group>
-        {host &&  <Item>
+          <Item>
             <Item.Image
               size='tiny'
               circular
@@ -46,7 +46,6 @@ const ActivityListItem: React.FC<{ activity: IActivity }> = ({ activity }) => {
               )}
             </Item.Content>
           </Item>
-        }
         </Item.Group>
       </Segment>
       <Segment>
