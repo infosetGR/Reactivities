@@ -62,3 +62,8 @@ npm install semantic-ui-react
  dotnet user-secrets set "Cloudinary:CloudName" "fotisss"
  dotnet user-secrets set "Cloudinary:ApiKey" "762788446487497"
  dotnet user-secrets set "Cloudinary:ApiSecret" "zvikwssqWxBcG320kd4VxdjKKKk"
+
+
+//  add at package.json: "postbuild": "move build ../API/wwwroot",
+// create client-app build folder   
+ npm run build
