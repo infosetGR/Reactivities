@@ -24,12 +24,13 @@ namespace Infrastructure.Security
         }
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, IsHostRequirement requirement)
-        {
-            if (context.Resource is AuthorizationFilterContext authContext)
-            {
+        {   //For dotnet3.1
+           // if (context.Resource is AuthorizationFilterContext authContext)
+           // {
                 var currentUserName = _httpContextAccessor.HttpContext.User?.Claims?.SingleOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
-
-                var activityId = Guid.Parse(authContext.RouteData.Values["id"].ToString());
+            //For dotnet3.1
+                // var activityId = Guid.Parse(authContext.RouteData.Values["id"].ToString());
+                var activityId = Guid.Parse(_httpContextAccessor.HttpContext.Request.RouteValues.SingleOrDefault(x=>x.Key=="id").Value.ToString());
 
                 var activity = _context.Activities.FindAsync(activityId).Result;
 
@@ -37,9 +38,9 @@ namespace Infrastructure.Security
 
                 if (host?.AppUser?.UserName == currentUserName)
                     context.Succeed(requirement);
-            } else {
-                context.Fail();
-            }
+            // else {
+            //     context.Fail();
+            // }
 
             return Task.CompletedTask;
         }

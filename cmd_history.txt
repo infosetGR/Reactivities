@@ -67,3 +67,8 @@ npm install semantic-ui-react
 //  add at package.json: "postbuild": "move build ../API/wwwroot",
 // create client-app build folder   
  npm run build
+
+ dotnet tool install --global dotnet-ef
+ //Microsoft.EntityFrameworkCore.Design
+
+ dotnet ef database drop -p Persistence/ -s API/
