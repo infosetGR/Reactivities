@@ -72,3 +72,6 @@ npm install semantic-ui-react
  //Microsoft.EntityFrameworkCore.Design
 
  dotnet ef database drop -p Persistence/ -s API/
+
+
+
