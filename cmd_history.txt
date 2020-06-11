@@ -73,5 +73,12 @@ npm install semantic-ui-react
 
  dotnet ef database drop -p Persistence/ -s API/
 
+https://securityheaders.com
+
+Azure App Service (extension for VS Code)
+ms-azuretools.vscode-azureappservice
+
+dotnet publish -c Release -o publish --self-contained false Reactivities.sln  
+
 
 

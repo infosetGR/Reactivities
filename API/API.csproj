@@ -6,7 +6,7 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="2.0.0"/>
+    <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="3.0.0"/>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5"/>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5"/>
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.5"/>

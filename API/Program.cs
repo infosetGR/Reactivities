@@ -40,8 +40,12 @@ namespace API
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults( webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
+            {  //sec
+                webBuilder.UseStartup<Startup>()
+                    .ConfigureKestrel((context, options) =>
+                    {
+                        options.AddServerHeader=false;
+                    });
             });
                 
     }
