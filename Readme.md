@@ -1,4 +1,4 @@
-Re-activities
+Re-activities (Events scheduling)
 
 .net core 3.1 app with React Frontend and mobx
 
