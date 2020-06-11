@@ -59,9 +59,9 @@ npm install semantic-ui-react
  npm install @types/react-cropper
 
 
- dotnet user-secrets set "Cloudinary:CloudName" "fotisss"
- dotnet user-secrets set "Cloudinary:ApiKey" "762788446487497"
- dotnet user-secrets set "Cloudinary:ApiSecret" "zvikwssqWxBcG320kd4VxdjKKKk"
+ dotnet user-secrets set "Cloudinary:CloudName" "--"
+ dotnet user-secrets set "Cloudinary:ApiKey" "--"
+ dotnet user-secrets set "Cloudinary:ApiSecret" "--"
 
 
 //  add at package.json: "postbuild": "move build ../API/wwwroot",
