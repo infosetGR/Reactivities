@@ -78,6 +78,7 @@ https://securityheaders.com
 Azure App Service (extension for VS Code)
 ms-azuretools.vscode-azureappservice
 
+PUBLISH
 dotnet publish -c Release -o publish --self-contained false Reactivities.sln  
 
 // Facebook Integration
