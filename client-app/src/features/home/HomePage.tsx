@@ -1,5 +1,5 @@
 import React, { useContext, Fragment } from 'react';
-import { Container, Segment, Header, Button, Image } from 'semantic-ui-react';
+import { Container, Segment, Header, Button, Image, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { RootStoreContext } from '../../app/stores/rootStore';
 import LoginForm from '../user/LoginForm';
@@ -20,8 +20,9 @@ const HomePage = () => {
             alt='logo'
             style={{ marginBottom: 12 }}
           />
-          Reactivities
         </Header>
+        <Header as='h2' inverted content={`Welcome to Reactivitities by fotis`} />
+      
         {isLoggedIn && user && token ? (
           <Fragment>
             <Header as='h2' inverted content={`Welcome back ${user.displayName}`} />
@@ -31,7 +32,9 @@ const HomePage = () => {
           </Fragment>
         ) : (
           <Fragment>
-          <Header as='h2' inverted content={`Welcome to Reactivitities`} />
+            
+       
+       
           <Button onClick={() => openModal(<LoginForm />)} size='huge' inverted>
             Login
           </Button>
@@ -40,6 +43,11 @@ const HomePage = () => {
           </Button>
         </Fragment>
         )}
+        <Divider horizontal></Divider>
+          <Fragment>
+          <body>Inspired by <a href="https://www.udemy.com/share/101Ae6BkoSdFZUQHg=/">Niel Cumming course</a></body>
+          
+        </Fragment>
       </Container>
     </Segment>
   );

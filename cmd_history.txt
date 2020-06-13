@@ -84,3 +84,7 @@ dotnet publish -c Release -o publish --self-contained false Reactivities.sln
 npm install react-facebook-login @types/react-facebook-login
 
 set HTTPS=true&&npm start
+
+dotnet ef migrations add RefreshTokens -p Persistence/ -s API/   
+
+npm install jsonwebtoken @types/jsonwebtoken
