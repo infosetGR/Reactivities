@@ -7,10 +7,12 @@ import { toast } from 'react-toastify';
 import { RootStore } from './rootStore';
 import { setActivityProps, createAttendee } from '../common/util/util';
 import { HubConnection, HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
+import jwt from 'jsonwebtoken';
 
-const LIMIT = 2;
+const LIMIT = 3;
 
 export default class ActivityStore {
+
   rootStore: RootStore;
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
@@ -65,10 +67,10 @@ export default class ActivityStore {
     this.page = page;
   }
 
-  @action createHubConnection = () => {
+  @action createHubConnection = (activityId:string) => {
     this.hubConnection = new HubConnectionBuilder()
       .withUrl(process.env.REACT_APP_API_CHAT_URL!, {
-        accessTokenFactory: () => this.rootStore.commonStore.token!
+        accessTokenFactory: () => this.checkTokenAndRefreshIfExpired()//  this.rootStore.commonStore.token!
       })
       .configureLogging(LogLevel.Information)
       .build();
@@ -76,6 +78,11 @@ export default class ActivityStore {
     this.hubConnection
       .start()
       .then(() => console.log(this.hubConnection!.state))
+      .then(() => {
+        if (this.hubConnection!.state =='Connected'){
+          console.log('Attempting to join group')
+          this.hubConnection!.invoke('AddToGroup',activityId);
+      }})      
       .catch(error => console.log('Error establishing connection: ', error));
 
     this.hubConnection.on('ReceiveComment', comment => {
@@ -83,10 +90,37 @@ export default class ActivityStore {
         this.activity!.comments.push(comment)
       })
     })
+    
+    this.hubConnection.on('Send', message=> {
+      toast.info(message);
+    })
   };
 
+  checkTokenAndRefreshIfExpired = async () => {
+    const token = localStorage.getItem('jwt');
+    const refreshToken=localStorage.getItem('refreshToken');
+    if (token && refreshToken) {
+      const decodedToken: any = jwt.decode(token);
+      if (decodedToken && Date.now()>=decodedToken.exp * 1000 - 5000){
+        try {
+          return await agent.User.refreshToken(token,refreshToken);
+        } catch(err){
+          toast.error("Problem connecting to chat");
+        }
+      } else {
+        return token;
+      }
+    }
+  }
+
+
   @action stopHubConnection = () => {
-    this.hubConnection!.stop()
+    this.hubConnection!.invoke('RemoveFromGroup', this.activity!.id)
+    .then(()=>{
+      this.hubConnection!.stop()
+    })
+    .then(()=>console.log('Connection stopped'))
+    .catch(err=>console.log(err))
   }
 
   @action addComment = async (values: any) => {

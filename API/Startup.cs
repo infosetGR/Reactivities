@@ -103,7 +103,7 @@ namespace API
                         ClockSkew=TimeSpan.Zero
                     };
                     opt.Events = new JwtBearerEvents
-                    {
+                    { 
                         OnMessageReceived = context => 
                         {
                             var accessToken = context.Request.Query["access_token"];
