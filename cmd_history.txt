@@ -78,6 +78,12 @@ https://securityheaders.com
 Azure App Service (extension for VS Code)
 ms-azuretools.vscode-azureappservice
 
+For Migration
+       .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
+       .Annotation("SqlServer:Identity", "1, 1"),
+       .Annotation("Sqlite:Autoincrement", true),
+
+
 dotnet publish -c Release -o publish --self-contained false Reactivities.sln  
 
 // Facebook Integration
