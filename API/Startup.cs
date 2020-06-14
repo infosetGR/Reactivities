@@ -41,7 +41,7 @@ namespace API
              services.AddDbContext<DataContext>(opt =>
             {
                 opt.UseLazyLoadingProxies();
-                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
                 
             });
             ConfigureServices(services);
@@ -154,12 +154,12 @@ namespace API
             app.UseCsp(opt => opt
                     .BlockAllMixedContent()
                     .StyleSources(s => s.Self()
-                        .CustomSources("https://fonts.googleapis.com", "sha256-F4GpCPyRepgP5znjMD8sc7PEjzet5Eef4r09dEGPpTs="))
+                        .CustomSources("https://fonts.googleapis.com", "sha256-F4GpCPyRepgP5znjMD8sc7PEjzet5Eef4r09dEGPpTs=","sha256-tsYFq5pUcggQKFXnvmlvUrk8MgTJLL1Gjnqenv201b8="))
                     .FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com", "data:"))
                     .FormActions(s => s.Self())
                     .FrameAncestors(s => s.Self())
-                    .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com", "blob:", "data:"))
-                    .ScriptSources(s => s.Self().CustomSources("sha256-5As4+3YpY62+l38PsxCEkjB1R4YtyktBtRScTJ3fyLU="))
+                    .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com","https://www.facebook.com", "blob:", "data:"))
+                    .ScriptSources(s => s.Self().CustomSources("sha256-5As4+3YpY62+l38PsxCEkjB1R4YtyktBtRScTJ3fyLU=","connect.facebook.net"))
                 );
 
             // app.UseHttpsRedirection();
